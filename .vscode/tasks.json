@@ -1,0 +1,29 @@
+{
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "cuda build",
+			"command": "\"${CUDA_PATH}/bin/nvcc.exe\"",
+			"args": [
+				"-arch=sm_89", //https://developer.nvidia.com/cuda-gpus
+				"-rdc=true",
+				"-use_fast_math",
+				"-O2",
+				"${file}",
+				"-o",
+				"${fileDirname}\\${fileBasenameNoExtension}.exe",
+				"-lcudadevrt"
+			],
+			"options": {
+				"cwd": "${CUDA_PATH}/bin"
+			},
+			"problemMatcher": ["$gcc"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "task made by debugger"
+		}
+	],
+	"version": "2.0.0"
+}
